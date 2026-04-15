@@ -1,37 +1,5 @@
-# Python
 __pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.egg
-*.egg-info/
-dist/
-build/
-.eggs/
-
-# Jupyter Notebooks
+*.pyc
 .ipynb_checkpoints/
-*.ipynb_checkpoints
-
-# Virtual Environments
-venv/
-env/
-.env/
-.venv/
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-
-# Data (optional: uncomment if dataset is large and not to be tracked)
-# data/*.csv
-
-# Output files
-outputs/*.png
-outputs/*.jpg
-outputs/*.pdf
+.env
+models/*.pkl
