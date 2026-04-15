@@ -150,6 +150,16 @@ crime-analysis/
 ```
 
 ---
+## 📸 Screenshots
+
+### 🔹 User Interface
+![UI](ui.pdf)
+
+### 🔹 Prediction Output
+![Prediction](prediction.png)
+
+### 🔹 Crime Analysis Graph
+![Graph](graph.png)
 
 ## 👥 Contributors
 
