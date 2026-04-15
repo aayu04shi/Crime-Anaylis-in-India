@@ -42,8 +42,7 @@ crime-pattern-analysis-india/
 ├── src/
 ├── models/
 ├── outputs/
-├── app/
-└── docs/
+└── app/
 ```
 
 ---
