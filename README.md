@@ -150,10 +150,7 @@ crime-analysis/
 ```
 
 ---
-## 📸 Screenshots
-
-### 🔹 User Interface
-![UI](ui.pdf)
+## 📸 Screenshots [User Interface]
 
 ### 🔹 Prediction Output
 ![Prediction](prediction.png)
