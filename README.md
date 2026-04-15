@@ -153,13 +153,13 @@ crime-analysis/
 ## 📸 Screenshots [User Interface]
 
 ### 🔹 Prediction Output
-![Prediction](prediction.png)
+![Prediction](outputs/prediction.png)
 
 ### 🔹 Dataset Preview
 ![Dataset_Preview](outputs/dataset_preview.png)
 
 ### 🔹 Crime Analysis Graph
-![Graph](graph.png)
+![Graph](outputs/graph.png)
 
 ---
 
