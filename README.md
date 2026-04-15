@@ -27,7 +27,7 @@ This project focuses on analyzing and predicting crime patterns in India using M
 - Matplotlib, Seaborn
 - Scikit-learn
 - Streamlit
-- 
+- Jupyter
 ---
 
 ## 📂 Project Structure
