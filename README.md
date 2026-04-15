@@ -33,9 +33,85 @@ This project focuses on analyzing and predicting crime patterns in India using M
 
 ## 📂 Project Structure
 
+```
+crime-pattern-analysis-india/
+│
+├── README.md
+├── requirements.txt
+├── data/
+├── notebooks/
+├── src/
+├── models/
+├── outputs/
+├── app/
+└── docs/
+```
 
+---
 
+## 📊 Dataset
 
+**File:** `data/crime_dataset_india.csv`
+
+| Column | Description |
+|---|---|
+| Report Number | Unique ID for each crime report |
+| Date Reported | Date the crime was reported |
+| Date of Occurrence | Actual date of the crime |
+| Time of Occurrence | Time the crime occurred |
+| City | City where the crime took place |
+| Crime Code | Numeric code for crime type |
+| Crime Description | Detailed description of the crime |
+| Victim Age | Age of the victim |
+| Victim Gender | Gender of the victim |
+| Weapon Used | Weapon involved (if any) |
+| Crime Domain | Category/domain of the crime (Target Variable) |
+| Police Deployed | Number of police personnel deployed |
+| Case Closed | Whether the case was closed |
+| Date Case Closed | Date the case was closed |
+
+---
+
+## 🧠 ML Pipeline
+
+### 1. Data Preprocessing
+- Removed duplicates
+- Filled missing values (median for age, "Unknown" for weapons)
+- Parsed and extracted date/time features
+
+### 2. Exploratory Data Analysis (EDA)
+- Top cities by crime count
+- Crime domain distribution
+- Yearly crime trends
+
+### 3. Classification (Random Forest)
+- **Target:** `Crime Domain`
+- **Model:** `RandomForestClassifier` (100 estimators)
+- **Split:** 80% train / 20% test
+- **Metrics:** Accuracy, Classification Report
+
+### 4. Clustering (K-Means)
+- Grouped cities into 5 clusters based on crime count
+- Visualized hotspot clusters on a scatter plot
+
+---
+
+## 📁 Repository Structure
+
+```
+crime-pattern-analysis/
+├── data/
+│   └── crime_dataset_india.csv       # Raw dataset
+├── notebooks/
+│   └── ML_Model_CrimePatternAnalysis.ipynb  # Main Jupyter notebook
+├── outputs/                          # Saved plots and results
+├── src/                              # (Optional) Modular Python scripts
+├── requirements.txt                  # Python dependencies
+├── .gitignore                        # Files to ignore
+└── README.md                         # Project documentation
+```
+
+---
 
 
 
