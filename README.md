@@ -113,7 +113,17 @@ crime-pattern-analysis/
 
 ---
 
+## 👥 Contributors
 
+| Name |
+|---|
+| Sreeya S. S. |
+|---|
+| Aayushi P. Naik |
+|---|
+| Saksham S. Lohote |
+
+---
 
 
 
