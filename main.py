@@ -8,6 +8,8 @@ df = load_data("data/crime_dataset_india.csv")
 # Clean data
 df = clean_data(df)
 
+print(df.columns)
+
 # Train model
 model, X_test, y_test = train_model(df)
 
