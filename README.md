@@ -161,6 +161,8 @@ crime-analysis/
 ### 🔹 Crime Analysis Graph
 ![Graph](graph.png)
 
+---
+
 ## 👥 Contributors
 
 | Name |
