@@ -175,7 +175,16 @@ crime-analysis/
 
 ---
 
+## 📥 Download Trained Model
 
+Due to GitHub file size limitations, the trained model is hosted externally.
+
+👉 [Download trained_model.pkl](https://drive.google.com/file/d/1NaKfJ_jmF42AY1X433zv9JYvs_0osSst/view?usp=drive_link)
+
+## ⚠️ Note
+
+The model file is large (>25MB) and cannot be uploaded directly to GitHub.
+Please download it using the link above before running the Streamlit app.
 
 
 
