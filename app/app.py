@@ -1,17 +1,19 @@
 import streamlit as st
 import pandas as pd
-import pickle
-
-st.set_page_config(page_title="Crime Analysis", layout="centered")
+import joblib
 
 st.title("🚔 Crime Pattern Analysis in India")
 
-# Load model
-model = pickle.load(open("models/trained_model.pkl", "rb"))
+# ---------------- LOAD MODEL ----------------
+try:
+    model = joblib.load("models/trained_model.pkl")
+except:
+    st.error("Model not found or corrupted. Please download it again.")
+    st.stop()
 
+# ================= PREDICTION SECTION (TOP) =================
 st.subheader("Enter Crime Details")
 
-# Inputs (only useful ones)
 city = st.selectbox("City", ["Mumbai", "Delhi", "Bangalore", "Pune"])
 victim_age = st.number_input("Victim Age", min_value=0, max_value=100)
 gender = st.selectbox("Victim Gender", ["Male", "Female"])
@@ -27,11 +29,11 @@ input_data = pd.DataFrame({
     "Police Deployed": [police]
 })
 
-# Encode like training
+# Encode
 input_data = pd.get_dummies(input_data)
 
-# Align with training columns
-model_columns = pickle.load(open("models/trained_model.pkl", "rb")).feature_names_in_
+# Align with model features
+model_columns = model.feature_names_in_
 
 for col in model_columns:
     if col not in input_data:
@@ -39,19 +41,22 @@ for col in model_columns:
 
 input_data = input_data[model_columns]
 
-# Predict
+# Prediction button
 if st.button("Predict Crime Type"):
     prediction = model.predict(input_data)
     st.success(f"Predicted Crime Domain: {prediction[0]}")
 
+# ================= DATASET SECTION (BOTTOM) =================
+st.subheader("📊 Dataset Analysis")
 
 uploaded_file = st.file_uploader("Upload Dataset", type=["csv"])
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
 
-    st.subheader("📊 Dataset Preview")
+    st.write("### Dataset Preview")
     st.write(df.head())
 
-    st.subheader("📈 Crime Distribution")
-    st.bar_chart(df["Crime Domain"].value_counts())
+    if "Crime Domain" in df.columns:
+        st.write("### Crime Distribution")
+        st.bar_chart(df["Crime Domain"].value_counts())
