@@ -165,7 +165,7 @@ Crime-Analysis-in-India/
 
 ## 📄 UI Preview
 
-![Crime_Analysis[webpage]](https://crime-analysis-in-india-jtxuwvnkxxfoqocfzhnzex.streamlit.app/)
+👉 [Open Live App](https://your-app.streamlit.app)
 
 ---
 
