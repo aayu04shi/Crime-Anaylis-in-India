@@ -43,8 +43,16 @@ if st.button("Train / Retrain Model"):
 
         if os.path.exists(file_path):
             old = pd.read_csv(file_path)
+
+            # 🧠 FIX: remove duplicates, keep best score
+            old = old.sort_values("Accuracy", ascending=False)
+            old = old.drop_duplicates(subset="GitHub", keep="first")
+
+            # remove current user (so new score replaces)
             old = old[old["GitHub"] != github_user]
+
             updated = pd.concat([old, new_entry], ignore_index=True)
+
         else:
             updated = new_entry
 
@@ -62,7 +70,7 @@ if st.button("Train / Retrain Model"):
             st.success("🚀 Leaderboard auto-pushed to GitHub!")
 
         except Exception:
-            st.warning("⚠️ Auto-push failed (works only locally). Please push manually.")
+            st.warning("⚠️ Auto-push works only locally. Push manually if needed.")
 
     else:
         st.warning("⚠️ Enter GitHub username!")
