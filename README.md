@@ -190,7 +190,7 @@ Crime-Analysis-in-India/
 <!-- LEADERBOARD_START -->
 | Rank | GitHub | Model | Accuracy |
 |------|--------|--------|----------|
-| 1 | aayu04shi | RandomForest | 5212.0% |
+| 1 | aayu04shi | RandomForest | 52.0% |
 <!-- LEADERBOARD_END -->
 
 ---
