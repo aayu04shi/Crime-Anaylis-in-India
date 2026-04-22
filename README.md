@@ -122,33 +122,40 @@ See `requirements.txt` for the full list. Key libraries:
 ```
 Crime-Analysis-in-India/
 │
-├── README.md                         # Project documentation
-├── requirements.txt                  # Dependencies
-├── .gitignore                        # Ignored files
-├── main.py                           # ML pipeline runner
+├── main.py
+├── app.py                     # Main Streamlit dashboard (train + predict)
+├── leaderboard.csv            # Stores user scores
+├── README.md                  # Project documentation + leaderboard
+├── requirements.txt           # Python dependencies
+├── .gitignore                 # Ignore unnecessary files
+├── update_readme.py
 │
 ├── data/
-│   └── crime_dataset_india.csv       # Dataset
-│
-├── notebooks/
-│   └── ML_Model_CrimePatternAnalysis.ipynb   # Notebook
-│
-├── src/
-│   ├── data_preprocessing.py         # Preprocessing
-│   ├── train_model.py                # Model training
-│   └── evaluate.py                   # Evaluation
+│   └── crime_dataset_india.csv   # Dataset
 │
 ├── models/
-│   └── README.txt                    # Note about external model
+│   ├── trained_model.pkl         # Saved ML model
+│   └── columns.pkl               # Feature columns used for prediction
 │
-├── app/
-│   └── app.py                        # Streamlit UI
+├── src/                         # Core ML logic (IMPORTANT)
+│   ├── __init__.py
+│   ├── train_model.py           # Training logic
+│   ├── data_preprocessing.py    # Cleaning + preprocessing
+│   └── evaluate.py              # (optional) evaluation logic
 │
-├── outputs/
-│   ├── dataset_preview.png           # Dataset screenshot
-│   ├── graph.png                     # Visualization
-│   ├── prediction.png                # Model output
-│   └── ui.pdf                        # UI screens / report
+├── pages/                       # Streamlit multi-page UI
+│   └── leaderboard.py           # Leaderboard page
+│
+├── notebooks/                   # (Optional) Jupyter notebooks
+│   └── ML_ModelCrimeAnalysis.ipynb
+│
+├── outputs/                     # (Optional) graphs/results
+│   └── dataset_preview.png
+│       └── graph.png
+│          └── prediction.png
+└── .github/
+    └── workflows/
+        └── update_leaderboard.yml   # Auto-update README leaderboard
 ```
 
 ---
@@ -178,17 +185,6 @@ Crime-Analysis-in-India/
 | Saksham S. Lohote |
 
 
----
-
-## 🏆 Leaderboard
-
-👉 [View Full Leaderboard](https://crime-analysis-in-india-jtxuwvnkxxfoqocfzhnzex.streamlit.app/leaderboard)
-
-<!-- LEADERBOARD_START -->
-| Rank | GitHub | Model | Accuracy |
-|------|--------|--------|----------|
-| 1 | aayu04shi | RandomForest | 57.02% |
-<!-- LEADERBOARD_END -->
 
 ---
 
