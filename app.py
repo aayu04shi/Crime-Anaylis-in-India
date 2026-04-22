@@ -1,12 +1,12 @@
 import sys
 import os
-
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-
+import subprocess
 import streamlit as st
 import pandas as pd
 import joblib
-import os
+
+# Fix import path for Streamlit Cloud
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 from src.train_model import train_model
 from src.data_preprocessing import clean_data
@@ -19,8 +19,6 @@ st.title("🚔 Crime Pattern Analysis in India")
 st.subheader("⚙️ Train Model & Submit Score")
 
 github_user = st.text_input("Enter your GitHub Username")
-
-acc = None  # initialize
 
 if st.button("Train / Retrain Model"):
 
@@ -45,10 +43,7 @@ if st.button("Train / Retrain Model"):
 
         if os.path.exists(file_path):
             old = pd.read_csv(file_path)
-
-            # Remove duplicate entries
             old = old[old["GitHub"] != github_user]
-
             updated = pd.concat([old, new_entry], ignore_index=True)
         else:
             updated = new_entry
@@ -57,6 +52,17 @@ if st.button("Train / Retrain Model"):
         updated.to_csv(file_path, index=False)
 
         st.success("🏆 Score submitted to leaderboard!")
+
+        # ================= AUTO PUSH (LOCAL ONLY) =================
+        try:
+            subprocess.run(["git", "add", "leaderboard.csv"], check=True)
+            subprocess.run(["git", "commit", "-m", "auto update leaderboard"], check=True)
+            subprocess.run(["git", "push"], check=True)
+
+            st.success("🚀 Leaderboard auto-pushed to GitHub!")
+
+        except Exception:
+            st.warning("⚠️ Auto-push failed (works only locally). Please push manually.")
 
     else:
         st.warning("⚠️ Enter GitHub username!")
@@ -102,7 +108,6 @@ try:
 
     X = pd.get_dummies(X, drop_first=True)
 
-    # Align columns
     for col in model_columns:
         if col not in X:
             X[col] = 0
@@ -115,7 +120,7 @@ try:
 
     st.info(f"📈 Current Model Accuracy: {round(acc_full*100, 2)}%")
 
-except Exception as e:
+except:
     st.warning("⚠️ Could not calculate accuracy")
 
 # ================= PREDICTION =================
@@ -137,7 +142,6 @@ input_data = pd.DataFrame({
 
 input_data = pd.get_dummies(input_data)
 
-# Align columns
 for col in model_columns:
     if col not in input_data:
         input_data[col] = 0
