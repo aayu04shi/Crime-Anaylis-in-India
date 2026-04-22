@@ -247,5 +247,19 @@ git push
 
 ---
 
+
+## 🏆 Leaderboard
+
+
+<!-- LEADERBOARD_START -->
+| Rank | GitHub | Model | Accuracy |
+|------|--------|--------|----------|
+| 1 | aayu04shi | RandomForest | 57.02% |
+<!-- LEADERBOARD_END -->
+
+---
+
 👉 Click here to view full leaderboard:
 [🔗 View Full Leaderboard](https://crime-analysis-in-india-jtxuwwnkxxfoqocfzhznex.streamlit.app/leaderboard)
+
+
