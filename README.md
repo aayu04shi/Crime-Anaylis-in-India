@@ -185,12 +185,31 @@ Crime-Analysis-in-India/
 
 ## 🏆 Leaderboard
 
-Check out the current rankings of contributors:
+Track the performance of contributors based on model accuracy.
 
-👉 [View Leaderboard](leaderboard.csv)
+👉 [View Full Leaderboard](leaderboard.csv)
+
+### 🥇 Top Performers
 
 | Rank | GitHub User | Model | Accuracy |
-|------|------------|------|----------|
+|------|------------|--------|----------|
 | 1    | Coming Soon | RandomForest | -- |
+| 2    | Coming Soon | -- | -- |
+| 3    | Coming Soon | -- | -- |
+
+---
+
+### 📌 How to Participate
+
+1. Clone the repository  
+2. Run the project and train the model  
+3. Enter your GitHub username in the app  
+4. Your score will be saved in `leaderboard.csv`  
+5. Push your changes:
+
+```bash
+git add leaderboard.csv
+git commit -m "Added my score"
+git push
 
 
