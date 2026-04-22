@@ -88,17 +88,25 @@ if model is not None:
 
         y = df["Crime Domain"]
         X = df.drop("Crime Domain", axis=1)
-        X = pd.get_dummies(X, drop_first=True)
+
+        from sklearn.model_selection import train_test_split
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, random_state=42
+        )
+
+        X_train = pd.get_dummies(X_train, drop_first=True)
+        X_test = pd.get_dummies(X_test, drop_first=True)
+        X_test = X_test.reindex(columns=X_train.columns, fill_value=0)
 
         # Align columns
         for col in model_columns:
-            if col not in X:
-                X[col] = 0
-        X = X[model_columns]
+            if col not in X_test:
+                X_test[col] = 0
+        X_test = X_test[model_columns]
 
         from sklearn.metrics import accuracy_score
-        y_pred = model.predict(X)
-        acc = accuracy_score(y, y_pred)
+        y_pred = model.predict(X_test)
+        acc = accuracy_score(y_test, y_pred)
 
         st.info(f"📈 Current Model Accuracy: {round(acc*100, 2)}%")
 
