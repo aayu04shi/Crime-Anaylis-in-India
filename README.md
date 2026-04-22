@@ -260,6 +260,6 @@ git push
 ---
 
 👉 Click here to view full leaderboard:
-[🔗 View Full Leaderboard](https://crime-analysis-in-india-jtxuwwnkxxfoqocfzhznex.streamlit.app/leaderboard)
+[🔗 View Full Leaderboard](https://crime-analysis-in-india-jtxuwvnkxxfoqocfzhnzex.streamlit.app/leaderboard)
 
 
