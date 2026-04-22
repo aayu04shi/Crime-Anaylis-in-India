@@ -1,3 +1,9 @@
+from supabase import create_client
+
+url = "https://rlbhqkhrbapxetjoubzm.supabase.co/rest/v1/"
+key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJsYmhxa2hyYmFweGV0am91YnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzUyOTgsImV4cCI6MjA5MjQ1MTI5OH0.YmYLnl3uvOl8DHkroRAaeT011VueTivS_U2V55xSDLs"
+
+supabase = create_client(url, key)
 import streamlit as st
 import pandas as pd
 import joblib
