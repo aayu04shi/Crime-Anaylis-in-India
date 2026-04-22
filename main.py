@@ -3,7 +3,7 @@ from src.train_model import train_model
 from src.evaluate import evaluate
 
 # Load dataset
-df = load_data("data/crime_dataset_india.csv")
+df = pd.read_csv("data/crime.csv")
 
 # Clean data
 df = clean_data(df)
