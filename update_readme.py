@@ -3,6 +3,18 @@ import pandas as pd
 # Load leaderboard
 df = pd.read_csv("leaderboard.csv")
 
+def get_medal(rank):
+    if rank == 1:
+        return "🥇"
+    elif rank == 2:
+        return "🥈"
+    elif rank == 3:
+        return "🥉"
+    else:
+        return ""
+
+df["Rank"] = df.index + 1
+df["🏅"] = df["Rank"].apply(get_medal)
 # Sort
 df = df.sort_values(by="Accuracy", ascending=False).reset_index(drop=True)
 
@@ -19,8 +31,9 @@ df = df.head(5)
 table = "| Rank | GitHub | Model | Accuracy |\n"
 table += "|------|--------|--------|----------|\n"
 
+rows = ""
 for _, row in df.iterrows():
-    table += f"| {row['Rank']} | {row['GitHub']} | {row['Model']} | {row['Accuracy']} |\n"
+    rows += f"| {row['🏅']} | {row['Rank']} | {row['GitHub']} | {row['Model']} | {round(row['Accuracy']*100,2)}% |\n"
 
 # Read README
 with open("README.md", "r", encoding="utf-8") as f:
