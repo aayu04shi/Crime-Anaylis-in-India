@@ -78,20 +78,8 @@ if st.button("Train / Retrain Model"):
 
         st.success("🏆 Score submitted to leaderboard!")
 
-        # ================= AUTO PUSH (LOCAL ONLY) =================
-        try:
-            subprocess.run(["git", "add", "."], check=True)
-            subprocess.run(["git", "commit", "-m", "auto update leaderboard + submission"], check=True)
-            subprocess.run(["git", "push"], check=True)
-
-            st.success("🚀 Changes auto-pushed to GitHub!")
-
-        except Exception:
-            st.warning("⚠️ Auto-push works only locally. Please push manually.")
-
-    else:
-        st.warning("⚠️ Enter GitHub username!")
-
+        
+        
 # ================= LOAD OR AUTO-TRAIN MODEL =================
 st.subheader("🤖 Model Initialization")
 
