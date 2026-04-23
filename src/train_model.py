@@ -36,12 +36,16 @@ def train_model(df):
     )
 
     # ---------------- MODEL ----------------
-    model = RandomForestClassifier(
-    n_estimators=200,
-    max_depth=10,
+    from xgboost import XGBClassifier
+
+model = XGBClassifier(
+    n_estimators=300,
+    max_depth=6,
+    learning_rate=0.1,
+    subsample=0.8,
+    colsample_bytree=0.8,
     random_state=42
 )
-    model.fit(X_train, y_train)
 
     # ---------------- EVALUATION ----------------
     evaluate(model, X_test, y_test)
