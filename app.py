@@ -77,6 +77,7 @@ if st.button("Train / Retrain Model"):
         updated.to_csv(file_path, index=False)
 
         st.success("🏆 Score submitted to leaderboard!")
+        st.info("📌 Now push your changes and create a Pull Request to appear on global leaderboard.")
 
         
         
