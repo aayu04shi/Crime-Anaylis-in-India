@@ -235,8 +235,8 @@ streamlit run app.py
 After training, push your score:
 
 ```bash
-git add leaderboard.csv
-git commit -m "Added my model score"
+git add submissions/
+git commit -m "My model submission"
 git push
 ```
 
@@ -249,11 +249,11 @@ git push
 👉 Click here to view full leaderboard:
  [View Full Leaderboard](http://localhost:8505/leaderboard)
 
+
 | Rank | GitHub | Model | Accuracy |
 |------|--------|-------|----------|
 <!-- LEADERBOARD START -->
-| 1 | Aayushi | RandomForest | 85.00% |
-| 2 | user2 | XGBoost | 78.12% |
+| Loading... | | | |
 <!-- LEADERBOARD END -->
 
 
