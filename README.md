@@ -122,40 +122,40 @@ See `requirements.txt` for the full list. Key libraries:
 ```
 Crime-Analysis-in-India/
 │
-├── main.py
-├── app.py                     # Main Streamlit dashboard (train + predict)
-├── leaderboard.csv            # Stores user scores
-├── README.md                  # Project documentation + leaderboard
-├── requirements.txt           # Python dependencies
-├── .gitignore                 # Ignore unnecessary files
-├── update_readme.py
+├── app.py                         # Main Streamlit app
+├── leaderboard.csv                # Auto-generated leaderboard
+├── README.md                      # Project documentation
+├── requirements.txt               # Dependencies
+├── .gitignore                     # Ignore unnecessary files
 │
 ├── data/
-│   └── crime_dataset_india.csv   # Dataset
+│   └── crime_dataset_india.csv    # Dataset
 │
 ├── models/
-│   ├── trained_model.pkl         # Saved ML model
-│   └── columns.pkl               # Feature columns used for prediction
+│   └── .gitkeep
+│  
 │
-├── src/                         # Core ML logic (IMPORTANT)
+├── src/
 │   ├── __init__.py
-│   ├── train_model.py           # Training logic
-│   ├── data_preprocessing.py    # Cleaning + preprocessing
-│   └── evaluate.py              # (optional) evaluation logic
+│   ├── train_model.py             # Training logic
+│   ├── data_preprocessing.py      # Cleaning logic
 │
-├── pages/                       # Streamlit multi-page UI
-│   └── leaderboard.py           # Leaderboard page
+├── submissions/                   # ⭐ USER SUBMISSIONS (VERY IMPORTANT)
+│   ├── user1_1712345678.csv
+│   ├── user2_1712348901.csv
 │
-├── notebooks/                   # (Optional) Jupyter notebooks
-│   └── ML_ModelCrimeAnalysis.ipynb
+├── pages/
+│   └── leaderboard.py             # Streamlit leaderboard page
 │
-├── outputs/                     # (Optional) graphs/results
-│   └── dataset_preview.png
-│       └── graph.png
-│          └── prediction.png
-└── .github/
-    └── workflows/
-        └── update_leaderboard.yml   # Auto-update README leaderboard
+├── .github/
+│   └── workflows/
+│       └── update_leaderboard.yml # Auto leaderboard update
+│
+├── update_leaderboard_auto.py     # Reads submissions → updates leaderboard
+├── update_readme.py               # Updates README leaderboard
+│
+└── notebooks/ 
+    └── analysis.ipynb
 ```
 
 ---
