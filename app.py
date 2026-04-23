@@ -111,6 +111,7 @@ if not os.path.exists("models/trained_model.pkl"):
 else:
     model = joblib.load("models/trained_model.pkl")
     model_columns = joblib.load("models/columns.pkl")
+    le = joblib.load("models/label_encoder.pkl")
 
 # ================= MODEL PERFORMANCE =================
 st.subheader("📊 Model Performance")
@@ -175,7 +176,8 @@ input_data = input_data[model_columns]
 
 if st.button("Predict Crime Type"):
     prediction = model.predict(input_data)
-    st.success(f"🚨 Predicted Crime Domain: {prediction[0]}")
+    decoded_prediction = le.inverse_transform(prediction)
+    st.success(f"🚨 Predicted Crime Domain: {decoded_prediction[0]}")
 
 # ================= DATASET VIEW =================
 st.subheader("📂 Dataset Preview")

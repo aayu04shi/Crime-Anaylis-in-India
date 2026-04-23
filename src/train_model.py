@@ -31,7 +31,9 @@ def train_model(df):
     ], axis=1)
 
     # ---------------- SPLIT ----------------
-    y = df["Crime Domain"]
+    from sklearn.preprocessing import LabelEncoder
+    le = LabelEncoder()
+    y = le.fit_transform(df["Crime Domain"])
     X = df.drop("Crime Domain", axis=1)
 
     # One-hot encoding
@@ -44,14 +46,16 @@ def train_model(df):
     # ---------------- MODEL ----------------
     from xgboost import XGBClassifier
 
-model = XGBClassifier(
-    n_estimators=300,
-    max_depth=6,
-    learning_rate=0.1,
-    subsample=0.8,
-    colsample_bytree=0.8,
-    random_state=42
-)
+    model = XGBClassifier(
+        n_estimators=300,
+        max_depth=6,
+        learning_rate=0.1,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        random_state=42
+    )
+
+    model.fit(X_train, y_train)
 
     # ---------------- EVALUATION ----------------
     evaluate(model, X_test, y_test)
@@ -61,6 +65,7 @@ model = XGBClassifier(
 
     joblib.dump(model, "models/trained_model.pkl", compress=3)
     joblib.dump(X.columns, "models/columns.pkl")
+    joblib.dump(le, "models/label_encoder.pkl")
 
     print("✅ Model and columns saved successfully!")
 
