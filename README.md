@@ -250,7 +250,7 @@ git push
 <!-- LEADERBOARD_START -->
 | Rank | GitHub | Model | Accuracy |
 |------|--------|--------|----------|
-| 1 | aayu04shi | RandomForest | 57.02% |
+| 1 | aayu04shi | RandomForest | 55.65% |
 <!-- LEADERBOARD_END -->
 
 ---
