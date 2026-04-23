@@ -14,6 +14,12 @@ def train_model(df):
     # ---------------- PREPROCESS ----------------
     df = clean_data(df)
 
+    df["Age_Group"] = pd.cut(
+    df["Victim Age"],
+    bins=[0, 18, 40, 60, 100],
+    labels=[0, 1, 2, 3]
+)
+
     # Drop unnecessary columns
     df = df.drop([
         "Report Number",
