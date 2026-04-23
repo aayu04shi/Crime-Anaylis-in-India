@@ -39,7 +39,6 @@ if st.button("Train / Retrain Model"):
     if not os.path.exists(submissions_folder):
         os.makedirs(submissions_folder)
 
-    # Unique filename using timestamp
     submission_file = f"{submissions_folder}/{github_user}_{int(time.time())}.csv"
 
     submission_df = pd.DataFrame(
@@ -67,7 +66,7 @@ if st.button("Train / Retrain Model"):
             old = old.sort_values("Accuracy", ascending=False)
             old = old.drop_duplicates(subset="GitHub", keep="first")
 
-            # Remove current user to replace with new score
+            # Remove current user (replace with new score)
             old = old[old["GitHub"] != github_user]
 
             updated = pd.concat([old, new_entry], ignore_index=True)
