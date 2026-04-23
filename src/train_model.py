@@ -28,12 +28,14 @@ def train_model(df):
     y = df["Crime Domain"]
     X = df.drop("Crime Domain", axis=1)
 
-    # One-hot encoding
-    X = pd.get_dummies(X, drop_first=True)
-
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
+        X, y, test_size=0.2, random_state=42, stratify=y
     )
+
+    # One-hot encoding after split to avoid category leakage from test data
+    X_train = pd.get_dummies(X_train, drop_first=True)
+    X_test = pd.get_dummies(X_test, drop_first=True)
+    X_test = X_test.reindex(columns=X_train.columns, fill_value=0)
 
     # ---------------- MODEL ----------------
     model = RandomForestClassifier(
@@ -50,7 +52,7 @@ def train_model(df):
     os.makedirs("models", exist_ok=True)
 
     joblib.dump(model, "models/trained_model.pkl", compress=3)
-    joblib.dump(X.columns, "models/columns.pkl")
+    joblib.dump(X_train.columns, "models/columns.pkl")
 
     print("✅ Model and columns saved successfully!")
 
