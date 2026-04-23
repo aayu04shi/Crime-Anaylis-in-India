@@ -246,16 +246,18 @@ git push
 
 ## 🏆 Leaderboard
 
+👉 Click here to view full leaderboard:
+ [View Full Leaderboard](http://localhost:8505/leaderboard)
 
-<!-- LEADERBOARD_START -->
 | Rank | GitHub | Model | Accuracy |
-|------|--------|--------|----------|
-| 1 | aayu04shi | RandomForest | 55.65% |
-<!-- LEADERBOARD_END -->
+|------|--------|-------|----------|
+<!-- LEADERBOARD START -->
+| 1 | Aayushi | RandomForest | 85.00% |
+| 2 | user2 | XGBoost | 78.12% |
+<!-- LEADERBOARD END -->
+
 
 ---
 
-👉 Click here to view full leaderboard:
-[🔗 View Full Leaderboard](https://crime-analysis-in-india-jtxuwvnkxxfoqocfzhnzex.streamlit.app/leaderboard)
 
 
