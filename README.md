@@ -269,12 +269,7 @@ git push
 
 
 <!-- LEADERBOARD START -->
-| Rank | 🏅 | GitHub | Model | Accuracy |
-|------|----|--------|--------|----------|
-| 1 | 🥇 | testing_01 | GradientBoostingClassifier | 57.06% |
-| 2 | 🥈 | aayu04shi | GradientBoosting | 57.06% |
-| 3 | 🥉 | testing_2 | GradientBoostingClassifier | 56.72% |
-
+Loading leaderboard...
 <!-- LEADERBOARD END -->
 
 ---
