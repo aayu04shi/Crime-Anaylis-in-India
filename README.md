@@ -278,7 +278,6 @@ git push
 | 1 | 🥇 | testing_01 | GradientBoostingClassifier | 57.06% |
 | 2 | 🥈 | aayu04shi | GradientBoosting | 57.06% |
 | 3 | 🥉 | testing_2 | GradientBoostingClassifier | 56.72% |
-| 4 |  | nan | RandomForest | 55.65% |
 
 <!-- LEADERBOARD END -->
 
