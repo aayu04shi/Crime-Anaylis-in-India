@@ -265,12 +265,8 @@ git push
 ## 🏆 Leaderboard
 
 👉 Click here to view full leaderboard:
- [View Full Leaderboard](http://localhost:8505/leaderboard)
+ [View Full Leaderboard](http://localhost:8501/leaderboard)
 
-
-## 🏆 Leaderboard
-
-👉 Click here to view full leaderboard: [View Full Leaderboard](./pages/leaderboard.py)
 
 <!-- LEADERBOARD START -->
 | Rank | 🏅 | GitHub | Model | Accuracy |
