@@ -36,7 +36,13 @@ start = "<!-- LEADERBOARD START -->"
 end = "<!-- LEADERBOARD END -->"
 
 # Replace content between markers
-new_content = content.split(start)[0] + start + "\n" + table + "\n" + end + content.split(end)[1]
+import re
+
+pattern = re.compile(f"{start}.*?{end}", re.DOTALL)
+
+new_section = f"{start}\n{table}\n{end}"
+
+new_content = re.sub(pattern, new_section, content)
 
 # Write back
 with open("README.md", "w", encoding="utf-8") as f:
