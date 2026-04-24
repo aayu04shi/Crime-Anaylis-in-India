@@ -27,6 +27,8 @@ table += "|------|----|--------|--------|----------|\n"
 
 for _, row in df.iterrows():
     table += f"| {row['Rank']} | {row['🏅']} | {row['GitHub']} | {row['Model']} | {row['Accuracy']:.2f}% |\n"
+    
+    table += f"\n_Last updated automatically_\n"
 
 # Read README
 with open("README.md", "r", encoding="utf-8") as f:
