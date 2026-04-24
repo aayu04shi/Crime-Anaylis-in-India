@@ -5,7 +5,6 @@ on:
     paths:
       - 'leaderboard.csv'
       - 'submissions/**'
-
 jobs:
   update-readme:
     runs-on: ubuntu-latest
