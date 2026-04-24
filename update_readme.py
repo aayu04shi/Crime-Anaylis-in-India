@@ -3,11 +3,11 @@ import pandas as pd
 # Load leaderboard
 df = pd.read_csv("leaderboard.csv")
 
-# Sort properly
-df = df.sort_values(by="Accuracy", ascending=False).reset_index(drop=True)
+# Sort by accuracy
+df = df.sort_values(by="Accuracy", ascending=False)
 
 # Add rank
-df["Rank"] = df.index + 1
+df["Rank"] = range(1, len(df) + 1)
 
 # Medal function
 def get_medal(rank):
@@ -26,7 +26,7 @@ table = "| Rank | 🏅 | GitHub | Model | Accuracy |\n"
 table += "|------|----|--------|--------|----------|\n"
 
 for _, row in df.iterrows():
-    table += f"| {row['Rank']} | {row['🏅']} | {row['GitHub']} | {row['Model']} | {round(row['Accuracy']*100, 2)}% |\n"
+    table += f"| {row['Rank']} | {row['🏅']} | {row['GitHub']} | {row['Model']} | {row['Accuracy']:.2f}% |\n"
 
 # Read README
 with open("README.md", "r", encoding="utf-8") as f:
@@ -35,7 +35,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 start = "<!-- LEADERBOARD START -->"
 end = "<!-- LEADERBOARD END -->"
 
-# Replace section
+# Replace content between markers
 new_content = content.split(start)[0] + start + "\n" + table + "\n" + end + content.split(end)[1]
 
 # Write back
