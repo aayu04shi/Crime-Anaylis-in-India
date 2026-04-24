@@ -1,4 +1,5 @@
 GitHub,Model,Accuracy
-testing_01,GradientBoosting,0.5705926294820717
+testing_01,GradientBoostingClassifier,0.5705926294820717
+testing_2,GradientBoostingClassifier,0.5672310756972112
 aayu04shi,RandomForest,0.5672310756972112
-testing_2,GradientBoosting,0.5672310756972112
+,RandomForest,0.5565239043824701
