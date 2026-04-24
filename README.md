@@ -249,6 +249,7 @@ After training, push your score:
 ```bash
 git add submissions/
 git commit -m "Added my model submission"
+git pull origin main --rebase
 git push
 ```
 ---
