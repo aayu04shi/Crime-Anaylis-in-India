@@ -22,6 +22,10 @@ st.subheader("⚙️ Train Model & Submit Score")
 github_user = st.text_input("Enter your GitHub Username")
 
 if st.button("Train / Retrain Model"):
+    
+    if github_user.strip() == "":
+        st.warning("Enter GitHub username!")
+        st.stop()
 
     df = pd.read_csv("data/crime_dataset_india.csv")
 
@@ -42,7 +46,7 @@ if st.button("Train / Retrain Model"):
     submission_file = f"{submissions_folder}/{github_user}_{int(time.time())}.csv"
 
     submission_df = pd.DataFrame(
-        [[github_user, "RandomForest", acc]],
+        [[github_user, model.__class__.__name__, acc]],
         columns=["GitHub", "Model", "Accuracy"]
     )
 
@@ -53,11 +57,13 @@ if st.button("Train / Retrain Model"):
     # ================= SAVE TO LEADERBOARD =================
     if github_user.strip() != "":
         file_path = "leaderboard.csv"
-
+        
+        model_name = model.__class__.__name__.replace("Classifier", "")
         new_entry = pd.DataFrame(
-            [[github_user, "RandomForest", acc]],
+            [[github_user, model_name, acc]],
             columns=["GitHub", "Model", "Accuracy"]
-        )
+)
+
 
         if os.path.exists(file_path):
             old = pd.read_csv(file_path)
