@@ -3,6 +3,13 @@ import pandas as pd
 # Load leaderboard
 df = pd.read_csv("leaderboard.csv")
 
+# Sort properly
+df = df.sort_values(by="Accuracy", ascending=False).reset_index(drop=True)
+
+# Add rank
+df["Rank"] = df.index + 1
+
+# Medal function
 def get_medal(rank):
     if rank == 1:
         return "🥇"
@@ -10,40 +17,26 @@ def get_medal(rank):
         return "🥈"
     elif rank == 3:
         return "🥉"
-    else:
-        return ""
+    return ""
 
-df["Rank"] = df.index + 1
 df["🏅"] = df["Rank"].apply(get_medal)
-# Sort
-df = df.sort_values(by="Accuracy", ascending=False).reset_index(drop=True)
-
-# Add rank
-df["Rank"] = df.index + 1
-
-# Convert accuracy to %
-df["Accuracy"] = (df["Accuracy"] * 100).round(2).astype(str) + "%"
-
-# Limit top 5
-df = df.head(5)
 
 # Create markdown table
-table = "| Rank | GitHub | Model | Accuracy |\n"
-table += "|------|--------|--------|----------|\n"
+table = "| Rank | 🏅 | GitHub | Model | Accuracy |\n"
+table += "|------|----|--------|--------|----------|\n"
 
-rows = ""
-for i, row in df.iterrows():
-    rows += f"| {i+1} | {row['🏅']} | {row['GitHub']} | {row['Model']} | {row['Accuracy']} |\n"
+for _, row in df.iterrows():
+    table += f"| {row['Rank']} | {row['🏅']} | {row['GitHub']} | {row['Model']} | {round(row['Accuracy']*100, 2)}% |\n"
 
 # Read README
 with open("README.md", "r", encoding="utf-8") as f:
     content = f.read()
 
-# Replace section
-start = "<!-- LEADERBOARD_START -->"
-end = "<!-- LEADERBOARD_END -->"
+start = "<!-- LEADERBOARD START -->"
+end = "<!-- LEADERBOARD END -->"
 
-new_content = content.split(start)[0] + start + "\n" + table + end + content.split(end)[1]
+# Replace section
+new_content = content.split(start)[0] + start + "\n" + table + "\n" + end + content.split(end)[1]
 
 # Write back
 with open("README.md", "w", encoding="utf-8") as f:

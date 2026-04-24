@@ -268,14 +268,12 @@ git push
  [View Full Leaderboard](http://localhost:8505/leaderboard)
 
 
+## 🏆 Leaderboard
+
+👉 Click here to view full leaderboard: [View Full Leaderboard](./pages/leaderboard.py)
+
 <!-- LEADERBOARD START -->
-
-| Rank | 🏅 | GitHub | Model | Accuracy |
-|------|----|--------|--------|----------|
-| 1 | 🥇 | Aayushi | RandomForest | 85.00% |
-| 2 | 🥈 | user2 | XGBoost | 78.12% |
-| 3 | 🥉 | user3 | GradientBoost | 75.45% |
-
+Loading leaderboard...
 <!-- LEADERBOARD END -->
 
 ---
