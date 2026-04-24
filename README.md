@@ -122,40 +122,35 @@ See `requirements.txt` for the full list. Key libraries:
 ```
 Crime-Analysis-in-India/
 │
-├── app.py                         # Main Streamlit app
-├── leaderboard.csv                # Auto-generated leaderboard
-├── README.md                      # Project documentation
-├── requirements.txt               # Dependencies
-├── .gitignore                     # Ignore unnecessary files
+├── app.py
+├── leaderboard.csv
+├── README.md
+├── requirements.txt
+├── .gitignore
 │
 ├── data/
-│   └── crime_dataset_india.csv    # Dataset
+│   └── crime_dataset_india.csv
 │
 ├── models/
 │   └── .gitkeep
-│  
 │
 ├── src/
 │   ├── __init__.py
-│   ├── train_model.py             # Training logic
-│   ├── data_preprocessing.py      # Cleaning logic
+│   ├── train_model.py
+│   ├── data_preprocessing.py
+│   └── evaluate.py
 │
-├── submissions/                   # ⭐ USER SUBMISSIONS (VERY IMPORTANT)
-│   ├── user1_1712345678.csv
-│   ├── user2_1712348901.csv
+├── submissions/
 │
 ├── pages/
-│   └── leaderboard.py             # Streamlit leaderboard page
+│   └── leaderboard.py
 │
 ├── .github/
 │   └── workflows/
-│       └── update_leaderboard.yml # Auto leaderboard update
+│       └── update_leaderboard.yml
 │
-├── update_leaderboard_auto.py     # Reads submissions → updates leaderboard
-├── update_readme.py               # Updates README leaderboard
-│
-└── notebooks/ 
-    └── analysis.ipynb
+├── update_leaderboard_auto.py
+├── update_readme.py
 ```
 
 ---
