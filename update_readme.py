@@ -32,8 +32,8 @@ table = "| Rank | GitHub | Model | Accuracy |\n"
 table += "|------|--------|--------|----------|\n"
 
 rows = ""
-for _, row in df.iterrows():
-    rows += f"| {row['🏅']} | {row['Rank']} | {row['GitHub']} | {row['Model']} | {round(row['Accuracy']*100,2)}% |\n"
+for i, row in df.iterrows():
+    rows += f"| {i+1} | {row['🏅']} | {row['GitHub']} | {row['Model']} | {row['Accuracy']} |\n"
 
 # Read README
 with open("README.md", "r", encoding="utf-8") as f:

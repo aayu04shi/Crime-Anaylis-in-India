@@ -187,8 +187,14 @@ Crime-Analysis-in-India/
 
 Follow these simple steps to contribute to the leaderboard:
 
-### 1️⃣ Clone the Repository
+### 1️⃣ Fork the Repository
 
+* Click **Fork** (top-right of this repo)
+* This creates your own copy
+
+---
+
+### 2️⃣ Clone Your Fork
 ```bash
 git clone https://github.com/aayu04shi/Crime-Analysis-in-India.git
 cd Crime-Analysis-in-India
@@ -196,7 +202,7 @@ cd Crime-Analysis-in-India
 
 ---
 
-### 2️⃣ Install Requirements
+### 3️⃣ Install Requirements
 
 ```bash
 pip install -r requirements.txt
@@ -204,7 +210,18 @@ pip install -r requirements.txt
 
 ---
 
-### 3️⃣ Run the Application
+### 4️⃣ Modify the Model
+
+* Go to:
+```bash
+src/train_model.py
+```
+* Change the Model here
+
+
+---
+
+### 5️⃣ Run the Application
 
 ```bash
 streamlit run app.py
@@ -212,7 +229,7 @@ streamlit run app.py
 
 ---
 
-### 4️⃣ Train the Model
+###  6️⃣Train the Model
 
 * Enter your **GitHub username** in the app
 * Click **"Train / Retrain Model"**
@@ -225,16 +242,21 @@ streamlit run app.py
 
 ---
 
-### 5️⃣ Update the Global Leaderboard
+### 7️⃣ Commit Your Submission
 
 After training, push your score:
 
 ```bash
 git add submissions/
-git commit -m "My model submission"
+git commit -m "Added my model submission"
 git push
 ```
+---
 
+8️⃣ Create Pull Request
+* Go to your fork on GitHub
+* Click "Compare & Pull Request"
+* Submit PR
 
 ---
 
@@ -245,12 +267,14 @@ git push
  [View Full Leaderboard](http://localhost:8505/leaderboard)
 
 
-| 🏅 | Rank | GitHub | Model | Accuracy |
-|----|------|--------|-------|----------|
 <!-- LEADERBOARD START -->
-| 🥇 | 1 | Aayushi | RandomForest | 85.00% |
-| 🥈 | 2 | user2 | XGBoost | 78.12% |
-| 🥉 | 3 | user3 | GradientBoost | 75.45% |
+
+| Rank | 🏅 | GitHub | Model | Accuracy |
+|------|----|--------|--------|----------|
+| 1 | 🥇 | Aayushi | RandomForest | 85.00% |
+| 2 | 🥈 | user2 | XGBoost | 78.12% |
+| 3 | 🥉 | user3 | GradientBoost | 75.45% |
+
 <!-- LEADERBOARD END -->
 
 ---
