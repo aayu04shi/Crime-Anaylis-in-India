@@ -3,6 +3,8 @@ name: Update Leaderboard
 on:
   pull_request:
     types: [closed]
+permissions:
+  contents: write
 
 jobs:
   update-leaderboard:
@@ -26,9 +28,9 @@ jobs:
           sort -r -k2 leaderboard.md -o leaderboard.md
 
       - name: Commit & push
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-          git add leaderboard.md
-          git commit -m "Updated leaderboard"
-          git push
+  run: |
+     git config --global user.name "github-actions"
+     git config --global user.email "actions@github.com"
+     git add leaderboard.md
+     git commit -m "Updated leaderboard" || echo "No changes"
+     git push
