@@ -1,6 +1,8 @@
 name: Update Leaderboard
 
 on:
+  pull_request:
+    types: [opened, synchronize, closed]
   push:
     branches: [main]
 
@@ -14,14 +16,27 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        - name: Install dependencies
+  run: pip install -r requirements.txt
 
-      - name: Read results
-        run: |
-          if [ -f results.txt ]; then
-            acc=$(grep 'accuracy' results.txt | cut -d ':' -f2)
-            f1=$(grep 'f1_score' results.txt | cut -d ':' -f2)
-            echo "ACC=$acc" >> $GITHUB_ENV
-            echo "F1=$f1" >> $GITHUB_ENV
+- name: Run model
+  run: python main.py
+
+    -  steps:
+  - uses: actions/checkout@v3
+
+  - name: Install dependencies
+    run: pip install -r requirements.txt
+
+  - name: Run model
+    run: python main.py
+
+  - name: Read results
+    run: |
+      acc=$(grep 'accuracy' results.txt | cut -d ':' -f2)
+      f1=$(grep 'f1_score' results.txt | cut -d ':' -f2)
+      echo "ACC=$acc" >> $GITHUB_ENV
+      echo "F1=$f1" >> $GITHUB_ENV
           else
             echo "No results.txt found"
           fi
