@@ -1,19 +1,22 @@
-name: Auto Leaderboard
+name: PR Auto Evaluation
 
 on:
-  push:
-    branches: [main]
+  pull_request_target:
+    types: [closed]
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  evaluate:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout PR code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -23,10 +26,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run model
+      - name: Run contributor model
         run: python main.py || echo "Model failed"
 
-      - name: Read results safely
+      - name: Read results
         run: |
           if [ -f results.txt ]; then
             acc=$(grep 'accuracy' results.txt | cut -d ':' -f2)
@@ -38,6 +41,9 @@ jobs:
           echo "ACC=$acc" >> $GITHUB_ENV
           echo "F1=$f1" >> $GITHUB_ENV
 
+      - name: Checkout main repo
+        uses: actions/checkout@v3
+
       - name: Update leaderboard
         run: |
           echo "| ${{ github.actor }} | $ACC | $F1 |" >> leaderboard.md
@@ -47,5 +53,5 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add leaderboard.md
-          git commit -m "Auto update leaderboard" || echo "No changes"
+          git commit -m "Auto update leaderboard from PR" || echo "No changes"
           git push
