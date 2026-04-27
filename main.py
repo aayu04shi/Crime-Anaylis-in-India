@@ -1,36 +1,32 @@
-print("STARTED")
-
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, f1_score
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.metrics import r2_score
 
-print("IMPORT DONE")
+def evaluate_models(X_train, y_train, X_test, y_test, models):
+    report = {}
+    for i in range(len(list(models))):
+        model = list(models.values())[i]
+        model.fit(X_train, y_train) # Train model
+        
+        y_test_pred = model.predict(X_test)
+        test_model_score = r2_score(y_test, y_test_pred)
+        
+        report[list(models.keys())[i]] = test_model_score
+    return report
 
-data = pd.read_csv("data/crime.csv")
-print("DATA LOADED")
+# The "Leaderboard" Logic
+models = {
+    "Random Forest": RandomForestRegressor(),
+    "Linear Regression": LinearRegression(),
+    "Ridge": Ridge(),
+    "Lasso": Lasso()
+}
 
-X = data.drop("target", axis=1)
-y = data["target"]
+model_report = evaluate_models(X_train, y_train, X_test, y_test, models)
 
-print("SPLITTING")
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
-
-print("MODEL TRAINED")
-
-y_pred = model.predict(X_test)
-
-accuracy = accuracy_score(y_test, y_pred)
-f1 = f1_score(y_test, y_pred, average='weighted')
-
-with open("results.txt", "w") as f:
-    f.write(f"accuracy:{accuracy}\n")
-    f.write(f"f1_score:{f1}\n")
-
-print("DONE")
-print("Accuracy:", accuracy)
-print("F1:", f1)
+# Automating the "Top Rank"
+best_model_score = max(sorted(model_report.values()))
+best_model_name = list(model_report.keys())[
+    list(model_report.values()).index(best_model_score)
+]
